@@ -1,10 +1,11 @@
 import sys
 import time
+import glob
 import numpy as np
 
 from alexnet.tools import (save_weights, load_weights,
                            save_momentums, load_momentums)
-from alexnet.train_funcs import (unpack_configs, adjust_learning_rate,
+from alexnet.train_funcs import (adjust_learning_rate,
                                  get_val_error_loss, get_rand3d,
                                  train_model_wrap)
 
@@ -106,7 +107,7 @@ def train_net(config):
 
         this_validation_error, this_validation_loss = get_val_error_loss(
             rand_arr, shared_x, shared_y, val_filenames, val_labels,
-            flag_datalayer, batch_size, validate_model,
+            flag_datalayer, batch_size, validate_model)
 
         print('epoch %i: validation loss %f ' %
               (epoch, this_validation_loss))
